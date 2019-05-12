@@ -19,22 +19,21 @@ class ExpenditureRepository extends ServiceEntityRepository
         parent::__construct($registry, Expenditure::class);
     }
 
-    // /**
-    //  * @return Expenditure[] Returns an array of Expenditure objects
-    //  */
-    /*
-    public function findByExampleField($value)
+     /**
+      * @return Expenditure[] Returns an array of Expenditure objects
+      */
+    
+    public function findByCategory($value)
     {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
+        return $this->createQueryBuilder('expenditure')
+            ->andWhere('expenditure.category = :val')
             ->setParameter('val', $value)
-            ->orderBy('e.id', 'ASC')
+            ->orderBy('expenditure.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Expenditure

@@ -1,15 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <a href="/January" class="list-group-item list-group-item-action">January</a>
-    <a href="/February" class="list-group-item list-group-item-action">February</a>
-    <a href="/March" class="list-group-item list-group-item-action">March</a>
-    <a href="/April" class="list-group-item list-group-item-action">April</a>
-    <a href="/May" class="list-group-item list-group-item-action">May</a>
-    <a href="/June" class="list-group-item list-group-item-action">June</a>
-    <a href="/July" class="list-group-item list-group-item-action">July</a>
-    <a href="/August" class="list-group-item list-group-item-action">August</a>
-    <a href="/October" class="list-group-item list-group-item-action">October</a>
-    <a href="/November" class="list-group-item list-group-item-action">November</a>
-    <a href="/December" class="list-group-item list-group-item-action">December</a>
+<table class="table text-center">
+<thead>
+  <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Category</th>
+  </tr>
+</thead>
+<tbody>
+{% for expenditure in expenditiures %}
+    <tr>
+      <td>{{expenditure.name}}</td>
+      <td>{{expenditure.price}}zł</td>
+      <td>{{expenditure.category}} {{expenditure.id}}</td>
+      <td> <a class="btn btn-primary" href="/expenditure/{{expenditure.id}}/edit" role="button">Edit</a></td>
+      <td> <a class="btn btn-danger" href="/expenditure/{{expenditure.id}}/delete" role="button">Delete</a></td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
 {% endblock %}

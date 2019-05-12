@@ -1,3 +1,33 @@
 index:
     path: /
+    controller: App\Controller\ExpenditureController::index
+    methods:    GET|HEAD
+
+list:
+    path: /{month}
     controller: App\Controller\ExpenditureController::list
+    methods:    GET|HEAD
+
+new:
+    path: /expenditure/new
+    controller: App\Controller\ExpenditureController::new
+    methods:    GET|HEAD
+
+edit:
+    path: /expenditure/{id}/edit
+    controller: App\Controller\ExpenditureController::edit
+    methods: GET|HEAD
+
+Store:
+    path: /expenditure/new
+    controller: App\Controller\ExpenditureController::new
+    methods:  POST
+
+update:
+    path: /expenditure/{id}/edit
+    controller: App\Controller\ExpenditureController::edit
+    methods:  POST
+
+delete:
+    path: /expenditure/{id}/delete
+    controller: App\Controller\ExpenditureController::delete

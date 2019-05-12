@@ -1,0 +1,25 @@
+App\Entity\Expenditure:
+    properties:
+        name:
+            - NotBlank: ~
+            - Length:
+                min: 2
+                max: 50
+                minMessage: 'Your first name must be at least {{ limit }} characters long'
+                maxMessage: 'Your first name cannot be longer than {{ limit }} characters'
+            - Type: alpha
+        price:
+            - NotBlank: ~
+            - Type: float
+            -  Length:
+                min: 5
+                max: 100
+                minMessage: 'Your first name must be at least {{ limit }} characters long'
+                maxMessage: 'Your first name cannot be longer than {{ limit }} characters'    
+        category:
+            - NotBlank: ~
+            - Type: String
+        month:
+            - Choice:
+                choices:  [January, February, March, April, May, June, July, August, September, October, November, December]
+                message:  Choose a valid genre.
