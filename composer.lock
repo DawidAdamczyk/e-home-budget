@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e768729d11b7032542c7dc90e72b311d",
+    "content-hash": "e41d74c730c1954e094f73afab789efb",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -3562,7 +3562,7 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "v4.2.7",
+            "version": "v4.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/options-resolver.git",

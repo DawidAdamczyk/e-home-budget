@@ -4,8 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use App\Form\StoreExpenditure;
 use App\Entity\Expenditure;
 
 class ExpenditureController extends AbstractController
@@ -15,7 +14,7 @@ class ExpenditureController extends AbstractController
         return $this->render('expenditure\index.html.twig');
     }
 
-    public function list($month, $value)
+    public function list($month)
     {
         $repository = $this->getDoctrine()->getRepository(Expenditure::class);
 
@@ -28,13 +27,7 @@ class ExpenditureController extends AbstractController
     {
         $expenditure = new Expenditure();
 
-        $form = $this->createFormBuilder( $expenditure)
-        ->add('name', TextType::class, ['attr' => ['class' => 'form-control']]) 
-        ->add('price', TextType::class, ['attr' => ['class' => 'form-control']]) 
-        ->add('category', TextType::class, ['attr' => ['class' => 'form-control']])
-        ->add('month', TextType::class, ['attr' => ['class' => 'form-control']]) 
-        ->add('save', SubmitType::class)
-        ->getForm();
+        $form = $this->createForm(StoreExpenditure::class, $expenditure);
 
         $form->handleRequest($request);
 
@@ -47,13 +40,11 @@ class ExpenditureController extends AbstractController
             $this->addFlash('success', 'Expenditure created');
 
             return $this->redirectToRoute('index');
-
         }
 
         return $this->render('expenditure/new.html.twig', [
             'form' => $form->createView(),
         ]);
-
     }
 
     public function edit($id, Request $request)
@@ -62,13 +53,7 @@ class ExpenditureController extends AbstractController
 
         $expenditure = $repository->find($id);
 
-        $form = $this->createFormBuilder( $expenditure)
-        ->add('name', TextType::class, ['attr' => ['class' => 'form-control']]) 
-        ->add('price', TextType::class, ['attr' => ['class' => 'form-control']]) 
-        ->add('category', TextType::class, ['attr' => ['class' => 'form-control']])
-        ->add('month', TextType::class, ['attr' => ['class' => 'form-control']]) 
-        ->add('save', SubmitType::class)
-        ->getForm();
+        $form = $this->createForm(StoreExpenditure::class, $expenditure);
 
         $form->handleRequest($request);
 
@@ -81,7 +66,6 @@ class ExpenditureController extends AbstractController
             $this->addFlash('success', 'Expenditure updated');
 
             return $this->redirectToRoute('index');
-
         }
 
         return $this->render('expenditure/edit.html.twig', [
